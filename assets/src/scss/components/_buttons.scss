@@ -1,0 +1,74 @@
+.btn-primary {
+    text-align: center;
+    letter-spacing: 2px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background: #d50000;
+    cursor: pointer;
+    color: #fff;
+    
+    &:hover {
+        color: #fff;
+        background: #d50000;
+    }
+
+    .uagb-button__link {
+        color: #fff !important;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 150px;
+        width: 50px;
+        background : black;
+        right: -85px;
+        top: -60px;
+        transform: rotate(37deg);
+        transition: all .3s;
+        opacity: 0.3;
+    }
+
+    &:hover::before {
+        right: 115%;
+    }
+
+  
+}
+
+.btn-secondary {
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    background : black;
+    cursor: pointer;
+    color: #fff;
+    
+    &:hover {
+        background : black;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 150px;
+        width: 50px;
+        background: #d50000;    
+        right: -40px;
+        top: -60px;
+        transform: rotate(37deg);
+        transition: all .3s;
+        opacity: 0.5;
+    }
+
+    &:hover::before {
+        right: 82%;
+    }
+
+  
+}
+
+

@@ -1,0 +1,111 @@
+/**
+* Columns
+*
+*/
+@mixin columns( $columns, $grid-gap) {
+
+  & > div, & > article {
+    float: left;
+    margin: 0 0 $grid-gap $grid-gap;
+    width: calc((100% / #{$columns}) - (#{$grid-gap}));
+    
+    @include media-breakpoint-down(md) {
+      width: calc((100% / #{2}) - (#{$grid-gap}));
+    }
+
+    @include media-breakpoint-up(md) {
+      &:nth-of-type(#{$columns}n+1) {
+        clear: both;
+        margin-left: 0;
+      }
+    }
+  }
+
+  @supports(grid-area: auto) {
+    display: grid;
+    //$grid-gutter-width
+    grid-gap: $grid-gap;
+    grid-template-columns: repeat( $columns, 1fr );
+
+    & > div, & > article {
+      margin: 0;
+      width: 100%;
+    }
+
+    @include media-breakpoint-down(lg) {
+      @if ($columns == "3") {
+        grid-template-columns: repeat( 2, 1fr );
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat( 1, 1fr );
+
+      &.fixed-layout {
+        grid-template-columns: repeat( $columns, 1fr);
+      }
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .layout-grid-#{$i} {
+    @include columns(#{$i},  30px);
+  }
+
+  // Mainly for wp galleries
+  .columns-#{$i} {
+    @extend .layout-grid-#{$i};
+  }
+}
+
+
+/**
+ * Responsive Width
+ * This mixin sets the width of an element and makes it 100% at the 'md' breakpoint and below.
+ *
+ * @param {String} $width - The width to be applied.
+ */
+ 
+$percentArray: 10%, 15%, 20%, 25%, 30%, 35%, 40%, 45%, 50%, 55%, 60%, 65%, 70%, 75%, 80%, 85%, 90%;
+
+@mixin responsive-width($width) {
+  width: $width;
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+// Generate width classes for specific percentages
+@for $i from 1 through 100 {
+  $percent: $i * 1%;
+
+  @if $percent in $percentArray {
+
+    .w-#{$i} {
+      @include responsive-width($percent);
+    }
+  }
+}
+
+/**
+ * Height variant, non-responsive (yet)
+ *
+ * @param {String} $height - The height to be applied.
+ */
+
+@mixin height($height) {
+  height: $height;
+}
+
+// Generate height classes for specific percentages
+@for $i from 1 through 100 {
+  $percent: $i * 1%;
+
+  @if $percent in $percentArray {
+    .h-#{$i} {
+      @include height($percent);
+    }
+  }
+}

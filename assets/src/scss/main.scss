@@ -1,0 +1,31 @@
+
+// abstracts
+@import "abstracts/variables";
+
+// vendors
+@import "node_modules/bootstrap/scss/bootstrap";
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+// vendors overrides
+// @import "vendors/myvendor";
+
+// base
+@import "base/fonts",
+        "base/base",
+        "base/mixins";
+
+// layout
+@import "layout/header",
+        "layout/footer",
+        "layout/megamenu",
+        "layout/content",
+        "layout/elements",
+        "layout/forms",
+        "layout/search";
+
+// components
+@import "components/buttons",
+        "components/modal",
+        "components/gutenberg";

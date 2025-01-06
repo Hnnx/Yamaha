@@ -1,0 +1,79 @@
+#header {
+
+  .nav-wrapper {
+
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 2px 3px #0000001A;
+    transition: 0.3s;
+    //Fix carousel overlap + FB feed
+    z-index: 17;
+
+    @include media-breakpoint-down(md) {
+      position: fixed;
+      top: 0;
+      max-height: unset;
+      height: 100vh;
+      width: 100vw;
+      background-color: #FFF;
+      padding: 15px;
+      z-index: 10;
+      left: 100%;
+    }
+
+    .custom-logo {
+      object-fit: contain;
+      max-height: 60px;
+      width: 100%;
+    }
+
+    &.hide {
+      transform: translateY(-100%);
+      transition: 0.3s;
+    }
+
+    &.mobile-active {
+      transform: translateX(-100%);
+      transition: 0.3s;
+    }
+  }
+
+  .mobile-nav {
+    background-color: $primary;
+    max-height: 70px;
+    width: 100vw;
+    bottom: 0;
+    z-index: 100;
+  }
+}
+
+#header-single {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0c0c0cb5;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  
+
+  .header-content {
+    min-height: 450px;
+    position: relative;
+  }
+
+}
+
+
+.header-banner {
+  background: linear-gradient(180deg, rgba(238,238,238,0) 60%, #000 90%),url("https://motomaxx.net/static/frontend/Motomaxx/default/sl_SI/images/bg-rider-wide%201-mini.jpg");
+  background-position: top center;
+  background-size: cover;
+}

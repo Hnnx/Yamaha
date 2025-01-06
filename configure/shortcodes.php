@@ -1,0 +1,6 @@
+<?php
+/**
+ * Shortcodes.
+ *
+ * @package Yamaha
+ */

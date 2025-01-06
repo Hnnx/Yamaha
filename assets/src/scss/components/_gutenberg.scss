@@ -1,0 +1,34 @@
+.wp-block-gallery {
+  gap: 30px !important;
+
+  .wp-block-image {
+    width: 100% !important;
+    cursor: pointer;
+  }
+}
+
+
+.cff-item {
+  font-size: 2rem !important; 
+
+  .cff-meta  span {
+    font-size: 2rem !important;
+  }
+
+  .cff-link-caption {
+    display: none !important;
+  }
+  
+  .cff-link-title a {
+    color: #000 !important;
+    font-size: 25px;
+    font-weight: 400;
+  }
+  
+  .cff-count {
+    color: #000;
+  }
+
+
+}
+

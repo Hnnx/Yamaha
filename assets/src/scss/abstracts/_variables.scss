@@ -1,0 +1,143 @@
+// Primary colors
+$primary: #FF0000;
+$secondary: #4113c0;
+$success: green;
+$warning: yellow;
+$danger: red;
+$info: cyan;
+$light: gray;
+$dark: black;
+
+// Text colors
+$body-color: #131313;
+$body-color-secondary: #000;
+
+// Link colors
+$link-color: $primary !default;
+$link-decoration: none;
+$link-hover-color: darken($primary, 10%);
+$link-hover-decoration: none;
+
+// .bg-#-subtle"
+// Default colors:
+// $primary-bg-subtle: tint-color($primary, 80%);
+$primary-bg-subtle: #B5B7B6;
+$secondary-bg-subtle: #0bd2ec;
+$light-bg-subtle: #B5B7B6; 
+
+/**
+* Bootstrap customised
+* @see https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+*/
+
+// Define default root font size
+$font-size-root: 62.5%; // 1rem = 10px
+$font-size-base: 2.5rem; // p 18px
+
+$font-weight-base: 300;
+$font-family-sans-serif: "Teko", sans-serif;
+
+// Headings font sizes
+$h1-font-size: 4.8rem;
+$h2-font-size: 3.6rem;
+$h3-font-size: 3.2rem;
+$h4-font-size: 2.4rem;
+$h5-font-size: 2.0rem;
+$h6-font-size: 1.8rem;
+
+$paragraph-margin-bottom: 20px;
+$headings-margin-bottom: 0;
+
+// .fs-#
+$font-sizes: (
+1: 1.1rem,
+2: 1.2rem,
+3: 1.3rem,
+4: 1.4rem,
+5: 1.5rem,
+6: 1.6rem
+);
+
+// Codex: https://getbootstrap.com/docs/5.0/content/typography/#display-headings
+$display-font-sizes: (
+  1: 7rem,
+  2: 6.5rem,
+  3: 6rem,
+  4: 5rem,
+);
+
+//$headings-font-weight: 500;
+$headings-line-height: 1.2;
+
+$display-font-weight: 400;
+$display-line-height: $headings-line-height;
+
+// .lh-#
+$line-height-1: 1;
+$line-height-sm: 1.1;
+$line-height-base: 1.2;
+$line-height-lg: 30px;
+
+$input-border-radius:0;
+
+$grid-columns:12;
+$grid-gutter-width:3rem;
+
+// .rounded-#
+$border-radius-sm:     .5rem;   //1
+$border-radius:        1rem;    //2
+$border-radius-lg:     1.5rem;  //3
+$border-radius-xl:     2rem;    //4
+$border-radius-xxl:    5rem;    //5
+$border-radius-pill:   50rem;
+
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+$spacer: 20px;
+$spacers : (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 2),
+    6: ($spacer * 2.5),
+    7: ($spacer * 3),
+    8: ($spacer * 4),
+    9: ($spacer * 5),
+    13: 125px,
+    14: 135px,
+    15: 150px,
+);
+
+
+// .btn
+$btn-padding-x: 20px;
+$btn-padding-y: 10px;
+// .btn-sm
+$btn-padding-x-sm: 5px;
+$btn-padding-y-sm: 5px;
+// .btn font
+$btn-font-size: 2.5rem;
+$btn-line-height: 1.25em;
+// .btn border
+$btn-border-radius: 2px;
+$btn-border-radius-sm: 5px;
+$btn-border-width: 0;
+$btn-border-color: transparent;

@@ -1,0 +1,9 @@
+#footer {
+  width: 100%;
+
+  .bottom-bar {
+    @include media-breakpoint-down(md) {
+      padding-bottom: 70px; //offset for mobile menu
+    }
+  }
+}

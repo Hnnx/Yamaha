@@ -1,0 +1,356 @@
+body {
+
+  &.noscroll {
+    overflow: hidden;
+    inset: 0;
+    touch-action: none;
+  }
+
+  #pagination {
+    .page-item {
+      align-content: center;
+    }
+
+    .page-number:not(.prev):not(.next) {
+      color: $primary;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 12px;
+
+      &.current {
+        color: $primary;
+      }
+    }
+
+    .pag-nav {
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+
+      &.right,
+      &.last {
+        border-bottom: 2px solid $primary;
+        border-right: 2px solid $primary;
+        transform: rotate(-45deg);
+      }
+
+      &.left,
+      &.first {
+        border-bottom: 2px solid $primary;
+        border-left: 2px solid $primary;
+        transform: rotate(45deg);
+      }
+
+      &.first:after,
+      &.last:after {
+        content: "";
+        position: absolute;
+        background: $primary;
+        top: 0;
+        width: 2px;
+        height: 14px;
+        border-radius: 3px;
+      }
+
+      &.first:after {
+        left: 0;
+        transform: rotate(-45deg) translateX(-6px);
+      }
+
+      &.last:after {
+        right: 0;
+        transform: rotate(45deg) translateX(6px);
+      }
+    }
+  }
+
+  // Located at body div closing tag - Opens when search bar or mobile menu is active
+  #overlay {
+    opacity: 0;
+    transition: 0.3s;
+
+    &.active {
+      position: fixed;
+      inset: 0;
+      background-color: #000;
+      opacity: 0.7;
+      z-index: 10;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+  }
+}
+
+
+#hero-wrapper {
+  // Define variable
+  $artefact: #000;
+
+  .content {
+    position: absolute;
+    right: 0;
+    top: 20%;
+  }
+
+  .feature-box {
+    position: relative;
+    height: 150px;
+    background-color: $artefact;
+    --animate-delay: 0.5s;
+
+    &.animate-first {
+      --animate-duration: 0.5s;
+    }
+
+    &:hover {
+      img {
+        transition: all 100ms ease-in-out;
+        transform: scale(1.10);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 0 0 150px 50px;
+      border-color: transparent transparent $artefact transparent;
+    }
+
+    .img-wrapper {
+      position: relative;
+      height: 75px;
+
+      img {
+        width: 220px;
+        position: absolute;
+        scale: 1;
+        z-index: 1;
+        top: -76px;
+        right: -5%;
+        transition: all .1s ease-in-out;
+      }
+    }
+
+    a {
+      color: #fff;
+
+      &:hover {
+        text-decoration: none;
+        color: $primary;
+      }
+    }
+
+
+
+  }
+
+}
+
+
+.loop-item {
+
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
+  transition: all .3s;
+
+  &:hover {
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .25);
+    transition: all .3s;
+  }
+
+  .img-wrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    scale: 100%;
+    transition: all .4s;
+
+    &:hover {
+      transition: all .4s;
+      scale: 103%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 500px;
+      width: 40px;
+      background: $primary;
+      right: -63%;
+      top: -118px;
+      transform: rotate(37deg);
+      transition: all .45s;
+      opacity: .3;
+    }
+
+    &:hover::before {
+      right: 140%;
+    }
+
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+
+}
+
+.slide-box {
+  width: 50%;
+  background-color: #000;
+  color: #fff;
+  margin-left: auto;
+  --animate-duration: 850ms;
+  position: relative;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+  &.slide-box.in-view {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 99%;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0px 9px 320px 122px;
+    border-color: transparent transparent #000 transparent;
+  }
+
+  .content-animate {
+
+    h2 {
+      font-size: 15rem;
+      line-height: 12rem;
+
+      &.text-primary {
+        --animate-duration: 1.5s;
+      }
+
+    }
+  }
+
+
+
+}
+
+
+.featured-vehicle {
+  height: 400px;
+  position: relative;
+
+  .slider-content {
+    background-color: #0000009c;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: relative;
+    transition: background 0.3s ease-in-out; 
+  }
+
+  .extra-info {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.5s ease-in-out;
+  }
+
+  &:hover {
+    .extra-info {
+      opacity: 1;
+      visibility: visible;
+      max-height: 300px; 
+    }
+  }
+}
+
+#featured-grid {
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Prevents interaction */
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth reveal */
+}
+
+#featured-grid.in-view {
+  opacity: 1; /* Fully visible */
+  visibility: visible;
+}
+
+.featured-product {
+  height: 450px;
+  position: relative;
+  overflow: hidden; 
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+    transition: background-color 250ms ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      background-color: hsl(0deg 0% 0% / 20%);
+    }
+
+    .featured-content {
+      transform: translateX(200%); 
+    }
+  }
+
+
+  .featured-content {
+    position: absolute;
+    top: 0;
+    left: -100%; 
+    background-color: #0000009c;
+    width: 50%;
+    height: 100%;
+    transition: transform 300ms ease-in-out; 
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      left: 100%;
+      border-width: 0px 120px 450px 0px;
+      border-color: transparent transparent #0000009c transparent;
+    }
+  }
+
+}
+
+
+.carousel-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+#thumbCarousel {
+  margin-top: 10px;
+}
+

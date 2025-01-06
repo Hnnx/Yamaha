@@ -1,0 +1,14 @@
+{
+  "name": "oguilleux/vitewptheme",
+  "description": "Blank Theme using Vite.js",
+  "type": "wordpress-theme",
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.8",
+    "wp-coding-standards/wpcs": "^3.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
