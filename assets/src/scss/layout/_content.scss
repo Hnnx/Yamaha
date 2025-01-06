@@ -83,77 +83,6 @@ body {
   }
 }
 
-
-#hero-wrapper {
-  // Define variable
-  $artefact: #000;
-
-  .content {
-    position: absolute;
-    right: 0;
-    top: 20%;
-  }
-
-  .feature-box {
-    position: relative;
-    height: 150px;
-    background-color: $artefact;
-    --animate-delay: 0.5s;
-
-    &.animate-first {
-      --animate-duration: 0.5s;
-    }
-
-    &:hover {
-      img {
-        transition: all 100ms ease-in-out;
-        transform: scale(1.10);
-      }
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 100%;
-      width: 0px;
-      height: 0px;
-      border-style: solid;
-      border-width: 0 0 150px 50px;
-      border-color: transparent transparent $artefact transparent;
-    }
-
-    .img-wrapper {
-      position: relative;
-      height: 75px;
-
-      img {
-        width: 220px;
-        position: absolute;
-        scale: 1;
-        z-index: 1;
-        top: -76px;
-        right: -5%;
-        transition: all .1s ease-in-out;
-      }
-    }
-
-    a {
-      color: #fff;
-
-      &:hover {
-        text-decoration: none;
-        color: $primary;
-      }
-    }
-
-
-
-  }
-
-}
-
-
 .loop-item {
 
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
@@ -251,7 +180,6 @@ body {
 
 
 }
-
 
 .featured-vehicle {
   height: 400px;
@@ -354,3 +282,73 @@ body {
   margin-top: 10px;
 }
 
+.swiper {
+
+  width: 100%;
+
+  &.thumb {
+    height: 200px;
+    margin-top: 10px;
+
+    .swiper-button-next::after {
+      color: red;
+    }
+    .swiper-button-prev::after {
+      color: red;
+    }
+
+    .swiper-slide {
+      opacity: 0.6;
+      transform: scale(1.0); // Use transform for scaling
+      transition: transform 250ms linear, opacity 250ms linear; // Transition both opacity and transform
+    
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05); // Scale the element on hover
+        transition: transform 250ms linear, opacity 250ms linear; // Ensure smooth transition for both properties
+      }
+
+      &-thumb-active {
+          opacity: 1;
+      }
+    }
+
+  }
+
+  &.main {
+    height: 400px;
+
+    .swiper-button-next::after {
+      font-size: 60rem;
+      position: relative;
+      color: transparent;
+      left: -132px;
+    }
+    .swiper-button-prev::after {
+      font-size: 60rem;
+      position: relative;
+      color: transparent;
+      left: 132px;
+    }
+
+
+  }
+
+  .swiper-slide {
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+}
+
+
+.slick-features {
+  .slick-slide {
+    padding: 0px 20px;
+  }
+}

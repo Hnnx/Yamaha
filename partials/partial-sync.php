@@ -1,41 +1,54 @@
 <?php 
 /**
  * 
- *  Slick synced gallery
+ *  Swiper.js + Fancybox gallery
  */
 
- $gallery = get_field('gallery');
+ $gallery = get_field('gallery'); 
 
 
- ?>
+?>
 
-<div class="carousel-container">
-  <!-- Main Carousel -->
-  <div id="mainCarousel" class="carousel">
-    <div class="carousel__slide" data-src="https://via.placeholder.com/800x600">
-      <img src="https://via.placeholder.com/800x600" alt="Image 1">
-    </div>
-    <div class="carousel__slide" data-src="https://via.placeholder.com/800x600">
-      <img src="https://via.placeholder.com/800x600" alt="Image 2">
-    </div>
-    <div class="carousel__slide" data-src="https://via.placeholder.com/800x600">
-      <img src="https://via.placeholder.com/800x600" alt="Image 3">
-    </div>
-  </div>
 
-  <!-- Thumbnail Carousel -->
-  <div id="thumbCarousel" class="carousel">
-    <div class="carousel__slide">
-      <img src="https://via.placeholder.com/100x75" alt="Thumbnail 1">
+
+<div class="swiper main">
+
+    <div class="swiper-wrapper">
+
+    <?php foreach ($gallery as $image): ?>
+
+        <div class="swiper-slide">
+            <a href="<?= esc_url($image['url']); ?>" data-fancybox="gallery-moto" data-caption="Single image">
+                <img class="rounded-2" src="<?= esc_url($image['sizes']['large']); ?>" />
+            </a>
+        </div>
+
+    <?php endforeach; ?>
+
     </div>
-    <div class="carousel__slide">
-      <img src="https://via.placeholder.com/100x75" alt="Thumbnail 2">
-    </div>
-    <div class="carousel__slide">
-      <img src="https://via.placeholder.com/100x75" alt="Thumbnail 3">
-    </div>
-  </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
+
+<div thumbsSlider="" class="swiper thumb">
+    <div class="swiper-wrapper">
+
+        <?php foreach ($gallery as $image): ?>           
+
+            <div class="swiper-slide">
+                <img class="rounded-2" class="rounded-2" src="<?= esc_url($image['sizes']['medium']); ?>" />
+            </div>
+
+        <?php endforeach; ?>
+
+    </div>
+
+    <div class="swiper-next swiper-button-next"></div>
+    <div class="swiper-prev swiper-button-prev"></div>
+
+</div>
+
 
 
 

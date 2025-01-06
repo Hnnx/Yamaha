@@ -17,17 +17,6 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://kit.fontawesome.com/deb1eca09a.js" crossorigin="anonymous"></script>
-
-    <!-- Fancybox and Carousel CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/carousel/carousel.css">
-
-<!-- Fancybox and Carousel JS -->
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/carousel/carousel.umd.js"></script>
-
-
-
     <?php wp_head(); ?>
 </head>
 

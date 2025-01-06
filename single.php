@@ -9,16 +9,12 @@ get_header();
 
 ?>
 
-<div class="wrapper" id="single-wrapper">
-	<div id="content" tabindex="-1">
-		<?php while ( have_posts() ) : the_post(); ?>
-			<main class="site-main" id="main">
+<?php while ( have_posts() ) : the_post(); ?>
+	<main class="site-main" id="main">
 
-				<?php get_template_part( 'template-loop/content-single', get_post_type() ); ?>
+		<?php get_template_part( 'template-loop/content-single', get_post_type() ); ?>
 
-			</main>	
-		<?php endwhile; wp_reset_postdata(); ?>
-	</div>
-</div>
+	</main>	
+<?php endwhile; wp_reset_postdata(); ?>
 
 <?php get_footer();

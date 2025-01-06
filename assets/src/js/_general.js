@@ -4,34 +4,6 @@ jQuery.noConflict();
 
   $(document).ready(function () {
 
-    $('[id^="vozilo-select"]').on('change', function () {
-      const postId = $(this).val();
-      const uniqueId = $(this).attr('id').replace('vozilo-select-', '');
-      const $table = $('#vozilo-data-' + uniqueId);
-
-      $.ajax({
-        type: 'post',
-        url: siteVars.ajaxUrl,
-        dataType: 'json',
-        data: {
-          post_id: postId,
-          action: 'get_vozilo_data_simple'
-        },
-        success: function (payload) {
-          if (payload.success) {
-            $table.html(payload.data.html); // Use payload.data.html
-          } else {
-            console.error('Error:', payload.message);
-            alert('Error: ' + payload.message);
-          }
-        },
-        error: function (err) {
-          console.log('AJAX error:', err);
-          alert('AJAX error occurred. Check console for details.');
-        }
-      });
-    });
-
     $('.slick-carousel').slick({
       autoplay: false,
       autoplaySpeed: 3000,  // Set the autoplay interval to 3 seconds
@@ -42,9 +14,16 @@ jQuery.noConflict();
       slidesToScroll: 1,    // Scroll one slide at a time
     });
 
+    $('.slick-features').slick({
+      autoplay: false,
+      dots: true,           
+      arrows: true,        
+      slidesToShow: 2,      
+      slidesToScroll: 1,    
+      centerMode: true,
+    });
 
     // Menu
-
     $('.menu-item-has-children > a').on('click', function (e) {
       e.preventDefault(); // Prevent the link from navigating
       const parent = $(this).parent(); // Get the parent element
@@ -135,13 +114,48 @@ jQuery.noConflict();
 
 class General {
   constructor() {
-    this.testVariable = 'JS initialized';
     this.init();
   }
 
+
   init() {
     this.setupIntersectionObserver();
+    this.initSwiper();
+
+    Fancybox.bind('[data-fancybox="gallery-moto"]');
+  
   }
+
+  initSwiper() {
+
+    var swiper = new Swiper(".thumb", {
+      spaceBetween: 20,
+      slidesPerView: 4,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: ".swiper-next", // Selector for the next arrow
+        prevEl: ".swiper-prev", // Selector for the previous arrow
+      },
+    });
+
+    var swiper2 = new Swiper(".main", {
+      spaceBetween: 15,
+      slidesPerView: 2,
+      centeredSlides: true,
+      centerInsufficientSlides: true,
+      freeMode: false,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiper,
+      },
+    });
+
+   
+  }
+
 
   setupIntersectionObserver() {
 
@@ -185,3 +199,5 @@ class General {
 }
 
 export default General;
+
+

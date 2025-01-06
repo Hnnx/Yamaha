@@ -47,6 +47,75 @@
   }
 }
 
+#hero-wrapper {
+  // Define variable
+  $artefact: #000;
+
+  .content {
+    position: absolute;
+    right: 0;
+    top: 200px;
+  }
+
+  .feature-box {
+    position: relative;
+    height: 150px;
+    background-color: $artefact;
+    --animate-delay: 0.5s;
+
+    &.animate-first {
+      --animate-duration: 0.5s;
+    }
+
+    &:hover {
+      img {
+        transition: all 100ms ease-in-out;
+        transform: scale(1.10);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 0 0 150px 50px;
+      border-color: transparent transparent $artefact transparent;
+    }
+
+    .img-wrapper {
+      position: relative;
+      height: 75px;
+
+      img {
+        width: 220px;
+        position: absolute;
+        scale: 1;
+        z-index: 1;
+        top: -76px;
+        right: -5%;
+        transition: all .1s ease-in-out;
+      }
+    }
+
+    a {
+      color: #fff;
+
+      &:hover {
+        text-decoration: none;
+        color: $primary;
+      }
+    }
+
+
+
+  }
+
+}
+
 #header-single {
   position: relative;
 
