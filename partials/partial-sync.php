@@ -27,8 +27,8 @@
 
     </div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-style swiper-button-next"></div>
+    <div class="swiper-button-style swiper-button-prev"></div>
 </div>
 
 <div thumbsSlider="" class="swiper thumb">
@@ -44,8 +44,8 @@
 
     </div>
 
-    <div class="swiper-next swiper-button-next"></div>
-    <div class="swiper-prev swiper-button-prev"></div>
+    <div class="swiper-button-style swiper-button-next"></div>
+    <div class="swiper-button-style swiper-button-prev"></div>
 
 </div>
 

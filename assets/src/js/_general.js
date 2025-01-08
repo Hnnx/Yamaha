@@ -123,6 +123,18 @@ class General {
     this.initSwiper();
 
     Fancybox.bind('[data-fancybox="gallery-moto"]');
+
+    document.querySelector('.show-more-btn').addEventListener('click', function() {
+      const tableContainer = document.querySelector('.table-container');
+      tableContainer.classList.toggle('expanded');  // Toggle the "expanded" class
+      // Optionally change the button text to "Show Less" if expanded
+      if (tableContainer.classList.contains('expanded')) {
+          this.textContent = 'Skrij';
+      } else {
+          this.textContent = 'Prikaži več';
+      }
+  });
+  
   
   }
 
@@ -133,14 +145,14 @@ class General {
       slidesPerView: 4,
       watchSlidesProgress: true,
       navigation: {
-        nextEl: ".swiper-next", // Selector for the next arrow
-        prevEl: ".swiper-prev", // Selector for the previous arrow
+        nextEl: ".swiper-button-next", // Selector for the next arrow
+        prevEl: ".swiper-button-prev", // Selector for the previous arrow
       },
     });
 
     var swiper2 = new Swiper(".main", {
       spaceBetween: 15,
-      slidesPerView: 2,
+      slidesPerView: 1,
       centeredSlides: true,
       centerInsufficientSlides: true,
       freeMode: false,

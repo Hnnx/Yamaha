@@ -191,14 +191,14 @@ body {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     position: relative;
-    transition: background 0.3s ease-in-out; 
+    transition: background 0.3s ease-in-out;
   }
 
   .extra-info {
     opacity: 0;
     visibility: hidden;
     max-height: 0;
-    overflow: hidden; 
+    overflow: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.5s ease-in-out;
   }
 
@@ -206,26 +206,30 @@ body {
     .extra-info {
       opacity: 1;
       visibility: visible;
-      max-height: 300px; 
+      max-height: 300px;
     }
   }
 }
 
 #featured-grid {
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Prevents interaction */
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth reveal */
+  opacity: 0;
+  /* Initially hidden */
+  visibility: hidden;
+  /* Prevents interaction */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  /* Smooth reveal */
 }
 
 #featured-grid.in-view {
-  opacity: 1; /* Fully visible */
+  opacity: 1;
+  /* Fully visible */
   visibility: visible;
 }
 
 .featured-product {
   height: 450px;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -233,7 +237,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;    
+    height: 100%;
     transition: background-color 250ms ease-in-out;
   }
 
@@ -243,7 +247,7 @@ body {
     }
 
     .featured-content {
-      transform: translateX(200%); 
+      transform: translateX(200%);
     }
   }
 
@@ -251,11 +255,11 @@ body {
   .featured-content {
     position: absolute;
     top: 0;
-    left: -100%; 
+    left: -100%;
     background-color: #0000009c;
     width: 50%;
     height: 100%;
-    transition: transform 300ms ease-in-out; 
+    transition: transform 300ms ease-in-out;
 
     &::before {
       content: "";
@@ -287,29 +291,25 @@ body {
   width: 100%;
 
   &.thumb {
-    height: 200px;
+    height: 100px;
     margin-top: 10px;
 
-    .swiper-button-next::after {
-      color: red;
-    }
-    .swiper-button-prev::after {
-      color: red;
+
+    .swiper-button-style {
+      color: #fff;
     }
 
     .swiper-slide {
       opacity: 0.6;
-      transform: scale(1.0); // Use transform for scaling
-      transition: transform 250ms linear, opacity 250ms linear; // Transition both opacity and transform
-    
+      transition: opacity 250ms linear; 
+
       &:hover {
         opacity: 1;
-        transform: scale(1.05); // Scale the element on hover
-        transition: transform 250ms linear, opacity 250ms linear; // Ensure smooth transition for both properties
+        transition: opacity 250ms linear; // Ensure smooth transition for both properties
       }
 
       &-thumb-active {
-          opacity: 1;
+        opacity: 1;
       }
     }
 
@@ -318,18 +318,36 @@ body {
   &.main {
     height: 400px;
 
-    .swiper-button-next::after {
-      font-size: 60rem;
-      position: relative;
-      color: transparent;
-      left: -132px;
+    .swiper-button-style {
+
+      &::after {
+        font-size: 10rem;
+        position: relative;
+        line-height: 341px;
+        color: transparent;
+        padding: 30px;
+        background: transparent; 
+        color: transparent; 
+        transition: background 0.3s ease, color 0.3s ease;
+        
+      }
+      
+      &:hover::after {        
+        border-radius: 10px;
+        background: #00000033;
+        color: #d5d5d5;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      &.swiper-button-prev::after {
+        left: 32px;
+      }
+      
+      &.swiper-button-next::after {
+        left: -32px;
+      }
     }
-    .swiper-button-prev::after {
-      font-size: 60rem;
-      position: relative;
-      color: transparent;
-      left: 132px;
-    }
+
 
 
   }
@@ -343,7 +361,6 @@ body {
     }
   }
 
-
 }
 
 
@@ -352,3 +369,79 @@ body {
     padding: 0px 20px;
   }
 }
+
+.list-group-item {
+  padding: 5px;
+  cursor: pointer;
+
+  .color-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #ccc;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #e0e0e0; 
+    color: #ff0000;            
+    border-radius: 5px;
+  }
+}
+
+
+
+/* Hide the table by default if height is below 200px */
+.table-container {
+  max-height: 200px;  /* Limit the height */
+  overflow: hidden;   /* Hide the overflow */
+  position: relative; /* Ensure proper positioning */
+  transition: max-height 0.5s ease-in-out; /* Smooth transition for expanding/collapsing */
+
+  /* Add a gradient fade effect at the bottom when the table is collapsed */
+  &::after {
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    display: block;
+    pointer-events: none;  
+  }
+
+  &.expanded {
+    max-height: 1000px; /* Set to a high value to allow full expansion */
+    transition: max-height 0.5s ease-in-out; /* Smooth transition for expanded state */
+  
+    &::after {
+      display: none;
+    }
+  }
+
+
+}
+
+.show-more-btn {
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+  }
+
+}
+
+
+
