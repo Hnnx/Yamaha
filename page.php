@@ -13,7 +13,7 @@ get_header();
 
 ?>
 
-<div class="container pt-15" role="main">
+<div class="container" role="main">
 	<div class="row">
 		<div class="col-12">
 			

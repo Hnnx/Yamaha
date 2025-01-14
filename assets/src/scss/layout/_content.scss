@@ -286,93 +286,8 @@ body {
   margin-top: 10px;
 }
 
-.swiper {
-
-  width: 100%;
-
-  &.thumb {
-    height: 100px;
-    margin-top: 10px;
-
-
-    .swiper-button-style {
-      color: #fff;
-    }
-
-    .swiper-slide {
-      opacity: 0.6;
-      transition: opacity 250ms linear; 
-
-      &:hover {
-        opacity: 1;
-        transition: opacity 250ms linear; // Ensure smooth transition for both properties
-      }
-
-      &-thumb-active {
-        opacity: 1;
-      }
-    }
-
-  }
-
-  &.main {
-    height: 400px;
-
-    .swiper-button-style {
-
-      &::after {
-        font-size: 10rem;
-        position: relative;
-        line-height: 341px;
-        color: transparent;
-        padding: 30px;
-        background: transparent; 
-        color: transparent; 
-        transition: background 0.3s ease, color 0.3s ease;
-        
-      }
-      
-      &:hover::after {        
-        border-radius: 10px;
-        background: #00000033;
-        color: #d5d5d5;
-        transition: background 0.3s ease, color 0.3s ease;
-      }
-
-      &.swiper-button-prev::after {
-        left: 32px;
-      }
-      
-      &.swiper-button-next::after {
-        left: -32px;
-      }
-    }
-
-
-
-  }
-
-  .swiper-slide {
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-}
-
-
-.slick-features {
-  .slick-slide {
-    padding: 0px 20px;
-  }
-}
-
 .list-group-item {
   padding: 5px;
-  cursor: pointer;
 
   .color-circle {
     width: 24px;
@@ -388,9 +303,13 @@ body {
     pointer-events: none;
   }
 
-  input[type="radio"]:checked + label {
-    background-color: #e0e0e0; 
-    color: #ff0000;            
+  label {
+    cursor: pointer;
+  }
+
+  input[type="radio"]:checked+label {
+    background-color: #e0e0e0;
+    color: #ff0000;
     border-radius: 5px;
   }
 }
@@ -399,28 +318,34 @@ body {
 
 /* Hide the table by default if height is below 200px */
 .table-container {
-  max-height: 200px;  /* Limit the height */
-  overflow: hidden;   /* Hide the overflow */
-  position: relative; /* Ensure proper positioning */
-  transition: max-height 0.5s ease-in-out; /* Smooth transition for expanding/collapsing */
+  max-height: 200px;
+  /* Limit the height */
+  overflow: hidden;
+  /* Hide the overflow */
+  position: relative;
+  /* Ensure proper positioning */
+  transition: max-height 0.5s ease-in-out;
+  /* Smooth transition for expanding/collapsing */
 
   /* Add a gradient fade effect at the bottom when the table is collapsed */
   &::after {
-    content: ''; 
-    position: absolute; 
-    bottom: 0; 
+    content: '';
+    position: absolute;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 30px;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     display: block;
-    pointer-events: none;  
+    pointer-events: none;
   }
 
   &.expanded {
-    max-height: 1000px; /* Set to a high value to allow full expansion */
-    transition: max-height 0.5s ease-in-out; /* Smooth transition for expanded state */
-  
+    max-height: 1000px;
+    /* Set to a high value to allow full expansion */
+    transition: max-height 0.5s ease-in-out;
+    /* Smooth transition for expanded state */
+
     &::after {
       display: none;
     }
@@ -445,3 +370,104 @@ body {
 
 
 
+.slick-product {
+
+  .product-main-slider {
+
+    .slick-arrow {
+      z-index: 10;
+      background-color: #00000067;
+      width: 70px;
+      height: 400px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      transition: background-color 450ms ease-in-out;
+
+      &:hover {
+        background-color: #000000be;
+      }
+
+      &.slick-prev {
+        left: 0;  
+        border-radius: 10px 0 0 10px;
+
+        &::before {
+          content: '‹';
+          font-size: 10rem;
+          line-height: 0;
+        }
+      }
+      
+    
+      &.slick-next {
+        right: 0;
+        border-radius: 0 10px 10px 0;
+
+        &::before {
+          content: '›';
+          font-size: 10rem;
+          line-height: 0;          
+        }
+      }
+  
+    }
+
+    a {
+      height: 400px;
+      display: block;
+
+      img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+    }
+
+  }
+
+  .product-slider {
+    margin-top: 10px;
+
+    .slick-slide {
+      opacity: 0.6;
+      transition: opacity 250ms linear;
+
+      &:hover {
+        opacity: 1;
+        transition: opacity 250ms linear;
+      }
+
+      &.slick-current {
+        opacity: 1;
+      }
+
+      img {
+        height: 150px;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+
+    .slick-arrow {
+      z-index: 10;
+  
+      &.slick-prev {
+        left: 0;  
+      }
+    
+      &.slick-next {
+        right: 0;
+      }
+  
+    }
+
+  }
+
+
+
+ 
+}
+
+.slick-features {
+  cursor: grab;
+}

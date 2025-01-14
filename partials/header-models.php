@@ -7,7 +7,7 @@
 
  $vozila = get_field('vozilo', 'options');
 
- $myid = 235;
+ $myid = 248;
 
 
  ?>
@@ -46,8 +46,8 @@
 
     <?php for ($i=0; $i < 5; $i++) :?>
 
-        <a class="vehicle text-reset" href="<?php echo get_the_permalink(235);?>">
-            <h1 class="display-4 text-center"><?php echo get_the_title(235);?></h1>
+        <a class="vehicle text-reset" href="<?php echo get_the_permalink(248);?>">
+            <h1 class="display-4 text-center"><?php echo get_the_title(248);?></h1>
             <span class="featured-product text-white shadow rounded-1 d-block" style="background:url('<?= get_the_post_thumbnail_url( $myid , 'large' );?>') center/cover no-repeat">
 
                 <div class="featured-content p-2 p-md-5">

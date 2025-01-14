@@ -1,7 +1,7 @@
 <?php 
 /**
  * 
- *  Swiper.js + Fancybox gallery
+ *  Spec sheet with show more button 
  */
 $repeater_field = get_field_object('specifikacije'); // Replace 'specifikacije' with your repeater field name
 

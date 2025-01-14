@@ -1,7 +1,7 @@
 <?php 
 /**
  * 
- *  Swiper.js + Fancybox gallery
+ *  Slick + Fancybox gallery
  */
 
  $gallery = get_field('gallery'); 
@@ -9,45 +9,25 @@
 
 ?>
 
+<!-- Main Image Slider -->
+<div class="slick-product">
 
-
-<div class="swiper main">
-
-    <div class="swiper-wrapper">
-
-    <?php foreach ($gallery as $image): ?>
-
-        <div class="swiper-slide">
-            <a href="<?= esc_url($image['url']); ?>" data-fancybox="gallery-moto" data-caption="Single image">
-                <img class="rounded-2" src="<?= esc_url($image['sizes']['large']); ?>" />
+    <div class="product-main-slider">
+        <?php foreach ($gallery as $image): ?>
+            <a class="slick-slide" data-fancybox="gallery" href="<?= esc_url($image['url']); ?>">
+                <img class="rounded-2" src="<?= esc_url($image['sizes']['large']); ?>" alt="<?= esc_url($image['sizes']['large']); ?>" />
             </a>
-        </div>
-
-    <?php endforeach; ?>
-
+        <?php endforeach;?>
     </div>
 
-    <div class="swiper-button-style swiper-button-next"></div>
-    <div class="swiper-button-style swiper-button-prev"></div>
-</div>
-
-<div thumbsSlider="" class="swiper thumb">
-    <div class="swiper-wrapper">
-
-        <?php foreach ($gallery as $image): ?>           
-
-            <div class="swiper-slide">
-                <img class="rounded-2" class="rounded-2" src="<?= esc_url($image['sizes']['medium']); ?>" />
-            </div>
-
-        <?php endforeach; ?>
-
+    <!-- Thumbnail Slider -->
+    <div class="product-slider">
+        <?php foreach ($gallery as $image): ?>
+            <div class="slick-slide px-2"><img class="rounded-2" src="<?= esc_url($image['sizes']['medium']); ?>" alt="Thumbnail 1" /></div>
+        <?php endforeach;?>
     </div>
-
-    <div class="swiper-button-style swiper-button-next"></div>
-    <div class="swiper-button-style swiper-button-prev"></div>
-
 </div>
+
 
 
 

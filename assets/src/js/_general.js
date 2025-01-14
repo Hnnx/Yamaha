@@ -4,6 +4,37 @@ jQuery.noConflict();
 
   $(document).ready(function () {
 
+
+    $('.product-main-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: true,
+      asNavFor: '.product-slider',
+    });
+
+    // Thumbnail Slider
+    $('.product-slider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.product-main-slider',
+      focusOnSelect: true,
+      arrows: true,
+      centerMode: true,
+      prevArrow: '<button type="button" class="slick-prev"></button>',
+      nextArrow: '<button type="button" class="slick-next"></button>',
+    });
+
+    // Fancybox for Lightbox
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      Thumbs: false,
+      buttons: [
+        "prev",
+        "next",
+        "close"
+      ],
+    });
+
     $('.slick-carousel').slick({
       autoplay: false,
       autoplaySpeed: 3000,  // Set the autoplay interval to 3 seconds
@@ -120,7 +151,6 @@ class General {
 
   init() {
     this.setupIntersectionObserver();
-    this.initSwiper();
 
     Fancybox.bind('[data-fancybox="gallery-moto"]');
 
@@ -137,37 +167,6 @@ class General {
   
   
   }
-
-  initSwiper() {
-
-    var swiper = new Swiper(".thumb", {
-      spaceBetween: 20,
-      slidesPerView: 4,
-      watchSlidesProgress: true,
-      navigation: {
-        nextEl: ".swiper-button-next", // Selector for the next arrow
-        prevEl: ".swiper-button-prev", // Selector for the previous arrow
-      },
-    });
-
-    var swiper2 = new Swiper(".main", {
-      spaceBetween: 15,
-      slidesPerView: 1,
-      centeredSlides: true,
-      centerInsufficientSlides: true,
-      freeMode: false,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      thumbs: {
-        swiper: swiper,
-      },
-    });
-
-   
-  }
-
 
   setupIntersectionObserver() {
 
