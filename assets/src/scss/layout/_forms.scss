@@ -1,17 +1,19 @@
 .ginput_container {
-    input, select {
+
+    input,
+    select {
         font-size: 2rem !important;
 
         &::placeholder {
             color: #0000008a;
         }
     }
-    
+
 }
 
 
 .disabled-input {
-    input  {
+    input {
         line-height: 20px !important;
         border: solid 1px transparent !important;
         pointer-events: none;
@@ -19,3 +21,6 @@
         border-radius: 5px !important;
     }
 }
+
+
+

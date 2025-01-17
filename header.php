@@ -82,6 +82,17 @@
 
                                 </div>
 
+                                <div class="d-flex ms-auto align-items-center gap-3">
+                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

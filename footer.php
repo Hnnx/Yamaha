@@ -17,6 +17,10 @@
 
 </div><!-- #site-content -->
 
+
+<?php get_template_part( 'partials/footer', 'cta' ); ?>
+
+
 <footer class="mt-13">
 	<div class="header-banner">
 		<?php get_template_part( 'partials/header', 'banner');?>

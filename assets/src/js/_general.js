@@ -5,6 +5,41 @@ jQuery.noConflict();
   $(document).ready(function () {
 
 
+    
+    const $siteMain = $('#main');
+    const $assistBox = $('.assist-box');
+    
+    if ($assistBox.length) { // Only run if .assist-box exists
+      const mainTop = $siteMain.offset().top;
+      const mainHeight = $siteMain.outerHeight();
+      const assistBoxHeight = $assistBox.outerHeight();
+      const stickyStart = mainTop + 20; // Adjust as needed
+      const stickyEnd = mainTop + mainHeight - assistBoxHeight - 20;
+    
+      $(window).on('scroll', function () {
+        const scrollTop = $(window).scrollTop();
+    
+        if (scrollTop > stickyStart && scrollTop < stickyEnd) {
+          $assistBox.css({
+            position: 'fixed',
+            top: '20px',
+          });
+        } else if (scrollTop <= stickyStart) {
+          $assistBox.css({
+            position: 'absolute',
+            top: '20px',
+          });
+        } else {
+          $assistBox.css({
+            position: 'absolute',
+            top: `${mainHeight - assistBoxHeight - 20}px`,
+          });
+        }
+      });
+    }
+    
+
+
     $('.product-main-slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -48,10 +83,9 @@ jQuery.noConflict();
     $('.slick-features').slick({
       autoplay: false,
       dots: true,           
-      arrows: true,        
-      slidesToShow: 2,      
+      slidesToShow: 3,      
       slidesToScroll: 1,    
-      centerMode: true,
+      infinite: false
     });
 
     // Menu
@@ -153,7 +187,7 @@ class General {
     this.setupIntersectionObserver();
 
     Fancybox.bind('[data-fancybox="gallery-moto"]');
-
+    
     document.querySelector('.show-more-btn').addEventListener('click', function() {
       const tableContainer = document.querySelector('.table-container');
       tableContainer.classList.toggle('expanded');  // Toggle the "expanded" class
@@ -164,8 +198,6 @@ class General {
           this.textContent = 'Prikaži več';
       }
   });
-  
-  
   }
 
   setupIntersectionObserver() {
@@ -210,5 +242,3 @@ class General {
 }
 
 export default General;
-
-
