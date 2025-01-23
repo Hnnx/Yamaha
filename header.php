@@ -45,7 +45,7 @@
             </div>
 
             <div id="nav" class="nav-wrapper bg-white">
-                <div class="container-fluid">
+                <div class="container-fluid px-md-9">
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex gap-5 py-3">
@@ -73,25 +73,14 @@
                                         ); ?>
                                     </nav>
 
-
-                                    <!-- // Iskalnik? -->
-                                     <?php if(false):?>
-                                    <a href="" class="d-md-block d-none search-icon align-self-center" id="search-trigger">
-                                    </a>
-                                    <?php endif;?>
-
                                 </div>
 
                                 <div class="d-flex ms-auto align-items-center gap-3">
-                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a class="d-inline-block text-dark" href="" target="_blank" class="social-icon">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
+                                    <?php if ( is_active_sidebar( 'main-sidebar' ) ) : ?>
+                                        <div id="main-sidebar-area" class="widget-area">
+                                            <?php dynamic_sidebar( 'main-sidebar' ); ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -101,10 +90,16 @@
 
             <?php if(is_front_page()){
                 get_template_part( 'partials/header', 'hero');
-            } else {
+            } elseif(is_archive()){
+                get_template_part( 'partials/header', 'archive');
+            } elseif(is_singular('parts')) {
+                // get_template_part( 'partials/header', 'archive');
+            }
+            else {
                 get_template_part( 'partials/header', 'single');
 
             }?>
+
 
         </header>
 

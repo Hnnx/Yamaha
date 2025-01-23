@@ -29,7 +29,7 @@
     <div class="content d-flex flex-column gap-8">
 
         <div class="feature-box p-5 animate__animated animate__slideInRight animate__delay-1s animate-first">
-            <a href="<?= site_url( '/prodaja/');?>">
+            <a href="<?= site_url( '/prodaja/motocikli/');?>">
                 <div class="img-wrapper">
                     <img src="<?= get_static_dir().'/img/yam_r1.png';?>" alt="">
                 </div>

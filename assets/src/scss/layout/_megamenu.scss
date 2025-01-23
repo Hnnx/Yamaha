@@ -11,17 +11,9 @@
       justify-content: end;
     }
 
-    &.btn {
-      line-height: 22px;
-
-      a {
-        color: #fff !important;
-
-        &:hover {
-          text-decoration: none;
-        }
-      }
-
+    &.last a {
+      @extend .btn;
+      @extend .btn-primary;
     }
 
     a {

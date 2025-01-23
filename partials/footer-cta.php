@@ -29,7 +29,9 @@
                     <p>
                     Preveri ponudbo original nadomestnih delov Yamaha, ki zagotavljajo optimalno delovanje in dolgo življenjsko dobo vašega plovila ali vozila. Na voljo so različni deli, ki ustrezajo vašim potrebam in zahtevam.
                     </p>
-                    <a href="<?= site_url( '/parts-type/');?>" class="btn btn-primary d-block fit-content mt-5">
+
+                    <?php echo get_post_type();?>
+                    <a href="<?= site_url( '/parts-type/filtri');?>" class="btn btn-primary d-block fit-content mt-5">
                         Preglej ponudbo
                     </a>
                 </div>

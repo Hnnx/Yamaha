@@ -54,37 +54,64 @@ $colors = get_the_terms( get_the_ID(), 'color' );
 
 					<button type="submit" class="btn btn-primary mt-3">Pošlji povpraševanje</button>
 				</form>
-
 			</div>
 		</div>
 
-		<!-- SPECS -->
-		<div class="row">
-			<div class="col-12 mx-auto my-5">
-				<h2>Specifikacije</h2>
-				<?php get_template_part( 'partials/partial', 'specs');?>			
-			</div>	
-		</div>
+	
+</div>
+
+<!-- TEST RIDE -->
+<?php if(get_field('test_ride')){
+	get_template_part( 'partials/partial', 'test-ride' );
+} ?>	 
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+					<!-- SPECS -->
+		<?php 
+			$specifikacije = get_field('specifikacije');
+			// Check if the array is not empty and all elements are not empty
+			$all_empty = true;
+
+			if (!empty($specifikacije) && is_array($specifikacije)) {
+				foreach ($specifikacije as $value) {
+					if (!empty($value)) {
+						$all_empty = false; // At least one field has a value
+						break; // No need to check further
+					}
+				}
+			}
+
+			if (!$all_empty) : ?>
+				<div class="row">
+					<div class="col-12 mx-auto my-5">
+						<h2>Specifikacije</h2>
+						<?php get_template_part('partials/partial', 'specs'); ?>			
+					</div>	
+				</div>
+		<?php  endif; ?>
 
 		<!-- FEATURES  -->
-		<div class="row">
+		<?php if (!empty($features) && is_array($features) && count($features) > 0): ?>
+			<div class="row">
 			<div class="col-12">
 				<h2>Lastnosti</h2>
 				<div class="slick-features my-5">
 					<?php foreach ($features as $feature): ?>
 						<div class="slide px-2">
-							<img class="rounded-2 w-100" height="220px" src="<?= esc_url($feature['slika']['sizes']['large']); ?>" />	
-							<h2 class="my-3"><?php echo $feature['title'];?> </h2>						
-							<p><?php echo $feature['description'];?> </p>						
+							<img class="rounded-2 w-100" height="220px" src="<?= esc_url($feature['slika']['sizes']['large']); ?>" />
+							<h2 class="my-3"><?php echo $feature['title']; ?> </h2>
+							<p><?php echo $feature['description']; ?> </p>
 						</div>
 					<?php endforeach; ?>
 				</div>
 			</div>
+			</div>
+		<?php endif; ?>
 		</div>
-	
+	</div>
 </div>
-
-
 		
 
 

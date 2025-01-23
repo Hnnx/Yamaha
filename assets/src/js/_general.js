@@ -4,6 +4,13 @@ jQuery.noConflict();
 
   $(document).ready(function () {
 
+    $('#taxonomy-dropdown').on('change', function() {
+      var value = $(this).val();
+      if (value) {
+          window.location.href = value;
+      }
+  });
+
 
     
     const $siteMain = $('#main');
@@ -13,8 +20,8 @@ jQuery.noConflict();
       const mainTop = $siteMain.offset().top;
       const mainHeight = $siteMain.outerHeight();
       const assistBoxHeight = $assistBox.outerHeight();
-      const stickyStart = mainTop + 20; // Adjust as needed
-      const stickyEnd = mainTop + mainHeight - assistBoxHeight - 20;
+      const stickyStart = mainTop + 40; // Adjust as needed
+      const stickyEnd = mainTop + mainHeight - assistBoxHeight - 40;
     
       $(window).on('scroll', function () {
         const scrollTop = $(window).scrollTop();
@@ -22,17 +29,17 @@ jQuery.noConflict();
         if (scrollTop > stickyStart && scrollTop < stickyEnd) {
           $assistBox.css({
             position: 'fixed',
-            top: '20px',
+            top: '40px',
           });
         } else if (scrollTop <= stickyStart) {
           $assistBox.css({
             position: 'absolute',
-            top: '20px',
+            top: '40px',
           });
         } else {
           $assistBox.css({
             position: 'absolute',
-            top: `${mainHeight - assistBoxHeight - 20}px`,
+            top: `${mainHeight - assistBoxHeight - 40}px`,
           });
         }
       });

@@ -193,6 +193,27 @@ if(!function_exists('helper_menu')){
 }
 
 
+// Footer helper menu
+
+if(!function_exists('footer_helper_menu')){
+	function footer_helper_menu($label = '', $tax = '' ){
+
+		$terms = get_terms(array(
+			'taxonomy' => $tax,
+			'hide_empty' => false, // Include all terms
+			'orderby' => 'name', // Order terms alphabetically
+			'order' => 'ASC',    // Ascending order
+			'number' => 1        // Limit to the first term
+		));
+
+		if (!empty($terms) && !is_wp_error($terms)) {
+			echo '<a href="' . esc_url(get_term_link($terms[0])) . '">' . $label . '</a>';
+		} 
+	}
+
+}
+
+
 
 function get_vozilo_data_simple() {
     if (!isset($_POST['post_id'])) {
@@ -230,3 +251,71 @@ function get_vozilo_data_simple() {
 add_action('wp_ajax_get_vozilo_data_simple', 'get_vozilo_data_simple');
 add_action('wp_ajax_nopriv_get_vozilo_data_simple', 'get_vozilo_data_simple');
 
+
+
+
+function custom_breadcrumb() {
+    if (is_singular('parts')) { // Check if it's a single 'parts' CPT
+        // Get the taxonomy terms for the current 'parts' post
+        $terms = get_the_terms(get_the_ID(), 'parts-type');
+        
+        if ($terms && !is_wp_error($terms)) {
+            $term = array_shift($terms); // Get the first term (assuming only one term per post)
+            $term_link = get_term_link($term); // Get the term link
+            $term_name = $term->name; // Get the term name
+        }
+
+        // Breadcrumb structure
+        echo '<div class="custom-breadcrumb">';
+        echo '<a href="' . home_url() . '">Domov</a> / ';
+        if (isset($term_link)) {
+            echo '<a href="' . $term_link . '">' . $term_name . '</a> / ';
+        }
+        echo get_the_title();
+        echo '</div>';
+    }
+}
+
+
+
+add_filter( 'gform_pre_render_3', 'populate_vozilo_dropdown' );
+add_filter( 'gform_pre_submission_filter_3', 'populate_vozilo_dropdown' );
+add_filter( 'gform_admin_pre_render_3', 'populate_vozilo_dropdown' );
+
+function populate_vozilo_dropdown( $form ) {
+    foreach ( $form['fields'] as &$field ) {
+        // Check if this is the correct field to populate
+        if ( $field->id != 12 ) {
+            continue;
+        }
+
+        // Fetch custom post type 'vozilo' with ACF field 'test_ride' set to 1
+		$posts = get_posts( array(
+			'post_type'   => 'vozilo',
+			'numberposts' => -1,
+			'post_status' => 'publish',
+			'meta_query'  => array(
+				array(
+					'key'     => 'test_ride', // ACF field key
+					'value'   => '1',         // Value to match (selected checkbox)
+					'compare' => 'LIKE',      // Use LIKE because ACF checkboxes store values as serialized arrays
+				),
+			),
+		) );
+
+        // Clear any existing choices
+        $choices = array();
+
+        // Populate choices with post titles
+        foreach ( $posts as $post ) {
+            $choices[] = array(
+                'text'  => $post->post_title,
+                'value' => $post->ID,
+            );
+        }
+
+        $field->choices = $choices;
+    }
+
+    return $form;
+}

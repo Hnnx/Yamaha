@@ -31,8 +31,3 @@ $values = array_values(get_field('specifikacije'));
 <div class="my-3 text-center">
     <button class="show-more-btn">Prikaži več</button>	
 </div>
-
-
-
-
-

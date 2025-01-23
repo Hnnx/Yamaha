@@ -136,13 +136,10 @@
   .header-content {
     min-height: 450px;
     position: relative;
+
+    &.single {
+      min-height: 300px;
+    }
   }
 
-}
-
-
-.header-banner {
-  background: linear-gradient(180deg, rgba(238,238,238,0) 60%, #000 90%),url("https://motomaxx.net/static/frontend/Motomaxx/default/sl_SI/images/bg-rider-wide%201-mini.jpg");
-  background-position: top center;
-  background-size: cover;
 }
