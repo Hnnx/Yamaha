@@ -590,3 +590,53 @@ body {
   }
 
 }
+
+
+
+.tax-menu  {
+
+  .list-group-item.active {
+    background-color: $danger;
+  }
+
+  .sub-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+
+
+    & > a {
+      display: none;
+    }
+
+    & > div:first-child {
+      background-color: #000 !important;
+    }
+  
+    a {
+      color: #000;
+    
+    }
+
+    .sub-menu-item {
+      padding: 5px 10px;
+    
+      &.active {
+        background-color: #efefef;
+      }
+    }
+  }
+
+}
+
+//Hide wrong tax fix!
+.tax-menu .sub-menu .sub-menu-item:first-child a {
+  display: none;
+}
+
+.sub-menu-item .has-children {
+  display: none;
+}
+

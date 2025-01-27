@@ -35,8 +35,6 @@
 
                 <?php the_content();?>
 
-                <?php get_template_part( 'partials/product', 'meta' ); ?>
-
                 <form method="GET" action="<?php echo esc_url(site_url('/povprasevanje/')); ?>">
                     <ul class="list-group list-group-flush">
                         <?php foreach ($colors as $color): ?>

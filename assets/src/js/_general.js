@@ -4,12 +4,28 @@ jQuery.noConflict();
 
   $(document).ready(function () {
 
-    $('#taxonomy-dropdown').on('change', function() {
-      var value = $(this).val();
-      if (value) {
-          window.location.href = value;
+
+    (function setupTaxonomyMenu() {
+      // Ensure the taxonomy menu exists before executing
+      if ($('.tax-menu').length) {
+          // Toggle the visibility of sub-menus on click (for parents with children)
+          $('.tax-menu .list-group-item.has-children').on('click', function (e) {
+              e.preventDefault(); // Prevent the link from being followed
+  
+              // Using siblings() to find the sub-menu that is a sibling of the clicked item
+              var $submenu = $(this).siblings('.sub-menu'); 
+              
+              $submenu.stop(true, true).slideToggle(); // Slide it down or up
+          });
+  
+          // Remove parent term (with 'has-children') from the submenu to avoid duplication
+          $('.tax-menu .sub-menu').each(function () {
+              // $(this).find('.has-children').remove(); // Remove parent term from submenu
+          });
+  
       }
-  });
+  })(); 
+
 
 
     
@@ -195,16 +211,16 @@ class General {
 
     Fancybox.bind('[data-fancybox="gallery-moto"]');
     
-    document.querySelector('.show-more-btn').addEventListener('click', function() {
-      const tableContainer = document.querySelector('.table-container');
-      tableContainer.classList.toggle('expanded');  // Toggle the "expanded" class
-      // Optionally change the button text to "Show Less" if expanded
-      if (tableContainer.classList.contains('expanded')) {
-          this.textContent = 'Skrij';
-      } else {
-          this.textContent = 'Prikaži več';
-      }
-  });
+    //   document.querySelector('.show-more-btn').addEventListener('click', function() {
+    //     const tableContainer = document.querySelector('.table-container');
+    //     tableContainer.classList.toggle('expanded');  // Toggle the "expanded" class
+    //     // Optionally change the button text to "Show Less" if expanded
+    //     if (tableContainer.classList.contains('expanded')) {
+    //         this.textContent = 'Skrij';
+    //     } else {
+    //         this.textContent = 'Prikaži več';
+    //     }
+    // });
   }
 
   setupIntersectionObserver() {

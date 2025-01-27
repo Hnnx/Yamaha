@@ -154,42 +154,58 @@ add_filter('posts_search', '__search_by_title_only', 500, 2);
 
 // Helper menu
 
-if(!function_exists('helper_menu')){
-	function helper_menu($title = '', $type = '' ){
+if ( !function_exists( 'helper_menu' ) ) {
+    function helper_menu( $title = '', $type = '' ) {
 
-		$terms = get_terms( array(
-			'taxonomy' => $type,
-			'hide_empty' => false,
-		) );
-		
-		
-		$grid_num = 5;
-		
-		?>
+        // Fetch all parent terms in the taxonomy
+        $terms = get_terms( array(
+            'taxonomy'   => $type,
+            'hide_empty' => false,
+            'parent'     => 0, // Only fetch top-level terms
+        ) );
+        ?>
 
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-<a href="#"><?php echo $title;?></a>
-<div class="sub-menu aux-sub-menu p-3 layout-grid-<?php echo $grid_num;?>">
-	<?php if (!is_wp_error($terms) && !empty($terms)) :?>
-			<?php foreach ($terms as $term):?>
-				<?php if ($image = get_field('image', $type.'_' . $term->term_id)) :?>
-					<a href="<?php echo get_term_link($term);?>" class="term-item">
-						<img src="<?php echo $image['sizes']['medium'];?>" alt="<?php echo esc_attr($image['alt']);?>">                    
-						<p class="text-center"><?php echo $term->name;?></p>
-					</a>
-				<?php else:?>
-					<a href="<?php echo get_term_link($term);?>" class="term-item">
-						<img src="http://ymh.razvija.se/wp-content/uploads/2024/11/placeholder.png" alt="">                                
-						<p class="text-center"><?php echo $term->name;?></p>
-					</a>
-				<?php endif;?>
-			<?php endforeach;?>
-	<?php endif;?>
-</div>
-</li>
+        <ul class="menu">
+            <li class="menu-item menu-item-has-children">
+                <a href="#"><?php echo esc_html( $title ); ?> <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="sub-menu top-level-submenu">
+                    <?php if ( !is_wp_error( $terms ) && !empty( $terms ) ) : ?>
+                        <?php foreach ( $terms as $term ) : ?>
+                            <?php
+                            // Check if the current term has children
+                            $children = get_terms( array(
+                                'taxonomy'   => $type,
+                                'hide_empty' => false,
+                                'parent'     => $term->term_id, // Fetch only direct children of the current term
+                            ) );
+                            ?>
+                            <li class="menu-item<?php echo !empty( $children ) ? ' menu-item-has-children' : ''; ?>">
+                                <a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
+                                    <?php echo esc_html( $term->name ); ?>
+                                    <?php if ( !empty( $children ) ) : ?>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    <?php endif; ?>
+                                </a>
+                                <?php if ( !empty( $children ) ) : ?>
+                                    <ul class="sub-menu">
+                                        <?php foreach ( $children as $child ) : ?>
+                                            <li class="sub-menu-item">
+                                                <a href="<?php echo esc_url( get_term_link( $child ) ); ?>">
+                                                    <?php echo esc_html( $child->name ); ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </li>
+        </ul>
 
-	<?php }
-
+        <?php
+    }
 }
 
 
