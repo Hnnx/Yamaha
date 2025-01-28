@@ -15,10 +15,13 @@ $values = array_values(get_field('specifikacije'));
         <table class="table table-hover">
             <tbody>
                 <?php for ($i = 0; $i < count($labels); $i++):?>
-                    <tr>
-                        <th><?php echo esc_html($labels[$i]['label']);?></th> 
-                        <td><?php echo esc_html($values[$i]);?></td> 
-                    </tr>
+
+                    <?php if($values[$i]):?>
+                        <tr>
+                            <th><?php echo esc_html($labels[$i]['label']);?></th> 
+                            <td><?php echo esc_html($values[$i]);?></td> 
+                        </tr>
+                    <?php endif;?>
                 <?php endfor;?>
             </tbody>
         </table>       

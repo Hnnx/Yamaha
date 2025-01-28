@@ -30,6 +30,10 @@ pre.dump {
 
 .container-fluid {
   max-width: 1920px;
+
+  &.padded {
+    padding: 0px 8%;
+  }
 }
 
 .fit-content {

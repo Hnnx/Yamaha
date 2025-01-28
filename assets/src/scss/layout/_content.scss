@@ -267,6 +267,10 @@ body {
     height: 100%;
     transition: transform 300ms ease-in-out;
 
+    span {
+      width: max-content;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -640,3 +644,9 @@ body {
   display: none;
 }
 
+
+
+.uagb-post__image img {
+  height: 250px;
+  object-fit: cover;
+}

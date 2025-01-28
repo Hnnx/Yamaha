@@ -19,7 +19,8 @@
 	</div>
 	<h4 class="my-3"><?php the_title();?></h4>
 
-	<?php the_excerpt();?>
+	<?php echo wp_trim_words(get_the_excerpt(), 25, '...'); ?>
+
 
 	<span class="btn btn-primary">Odkrijte več</span>
 

@@ -335,3 +335,27 @@ function populate_vozilo_dropdown( $form ) {
 
     return $form;
 }
+
+function taxonomy_breadcrumb() {
+    // Check if viewing a taxonomy term archive
+    if (is_tax() || is_category() || is_tag()) {
+        $term = get_queried_object(); // Get the current term object
+        
+        // Breadcrumb start
+        echo '<nav class="taxonomy-breadcrumb">';
+        
+        // Get the parent term hierarchy, if exists
+        if ($term->parent) {
+            $parent_term = get_term($term->parent); // Get parent term
+            $parent_link = get_term_link($parent_term); // Parent term link
+            
+            echo '<a href="' . esc_url($parent_link) . '">' . esc_html($parent_term->name) . '</a> / ';
+        }
+        
+        // Current term
+        echo '<span>' . esc_html($term->name) . '</span>';
+        
+        // Breadcrumb end
+        echo '</nav>';
+    }
+}

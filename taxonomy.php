@@ -9,35 +9,19 @@
 
 get_header();
 
-
 ?>
 
 <main id="primary" class="site-main">
-        <div class="container-fluid mt-5">
+        <div class="container-fluid padded my-5">
             <div class="row">
                 <div class="col-12 col-lg-2">
-
-                <?php get_template_part( 'partials/partial', 'categories' ); ?>
-           
-
+                    <?php get_template_part( 'partials/partial', 'categories' ); ?>       
                 </div>
                 <div class="col-12 col-lg-10">
 
-                    <?php if ( have_posts() ) : ?>
+                    <?php taxonomy_breadcrumb(); ?>
 
-                        <div class="layout-grid-4">
-                            <?php while ( have_posts() ) : the_post() ?>
-                                <?php get_template_part( 'template-loop/content', get_post_type() ); ?>
-                            <?php endwhile; ?>
-                        </div>
-
-                        <div class="d-flex justify-content-center mt-6">
-                            <?php understrap_pagination() ?>
-                        </div>
-
-                    <?php else : ?>         
-                        <?php get_template_part( 'template-parts/content', 'none' ); ?>
-                    <?php endif; ?>
+                    <?php get_template_part( 'partials/partial', 'tax');?>
 
                 </div>
             </div>

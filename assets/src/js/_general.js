@@ -5,6 +5,24 @@ jQuery.noConflict();
   $(document).ready(function () {
 
 
+    (function showMoreBtn() {
+      if ($('.show-more-btn').length) { 
+        $('.show-more-btn').on('click', function() {
+            const tableContainer = $('.table-container');
+            tableContainer.toggleClass('expanded'); // Toggle the "expanded" class
+            
+            // Optionally change the button text to "Show Less" if expanded
+            if (tableContainer.hasClass('expanded')) {
+                $(this).text('Skrij');
+            } else {
+                $(this).text('Prikaži več');
+            }
+        });
+    }
+    
+    })();
+
+
     (function setupTaxonomyMenu() {
       // Ensure the taxonomy menu exists before executing
       if ($('.tax-menu').length) {
@@ -209,18 +227,8 @@ class General {
   init() {
     this.setupIntersectionObserver();
 
-    Fancybox.bind('[data-fancybox="gallery-moto"]');
-    
-    //   document.querySelector('.show-more-btn').addEventListener('click', function() {
-    //     const tableContainer = document.querySelector('.table-container');
-    //     tableContainer.classList.toggle('expanded');  // Toggle the "expanded" class
-    //     // Optionally change the button text to "Show Less" if expanded
-    //     if (tableContainer.classList.contains('expanded')) {
-    //         this.textContent = 'Skrij';
-    //     } else {
-    //         this.textContent = 'Prikaži več';
-    //     }
-    // });
+    Fancybox.bind('[data-fancybox="gallery-moto"]');   
+
   }
 
   setupIntersectionObserver() {
