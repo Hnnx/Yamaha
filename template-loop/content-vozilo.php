@@ -22,7 +22,7 @@
 	<?php echo wp_trim_words(get_the_excerpt(), 25, '...'); ?>
 
 
-	<span class="btn btn-primary">Odkrijte več</span>
+	<span class="btn btn-primary mt-auto">Odkrijte več</span>
 
 
 </a>

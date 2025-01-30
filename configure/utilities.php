@@ -271,9 +271,14 @@ add_action('wp_ajax_nopriv_get_vozilo_data_simple', 'get_vozilo_data_simple');
 
 
 function custom_breadcrumb() {
-    if (is_singular('parts')) { // Check if it's a single 'parts' CPT
-        // Get the taxonomy terms for the current 'parts' post
-        $terms = get_the_terms(get_the_ID(), 'parts-type');
+    if (is_singular(['parts', 'equipment'])) { // Check if it's a single 'parts' or 'equipment' CPT
+        
+        // Determine the correct taxonomy based on the post type
+        $post_type = get_post_type();
+        $taxonomy = ($post_type === 'parts') ? 'parts-type' : 'apparel';
+        
+        // Get the taxonomy terms for the current post
+        $terms = get_the_terms(get_the_ID(), $taxonomy);
         
         if ($terms && !is_wp_error($terms)) {
             $term = array_shift($terms); // Get the first term (assuming only one term per post)
@@ -283,14 +288,15 @@ function custom_breadcrumb() {
 
         // Breadcrumb structure
         echo '<div class="custom-breadcrumb">';
-        echo '<a href="' . home_url() . '">Domov</a> / ';
+        echo '<a href="' . home_url() . '">Domov</a> &raquo; ';
         if (isset($term_link)) {
-            echo '<a href="' . $term_link . '">' . $term_name . '</a> / ';
+            echo '<a href="' . esc_url($term_link) . '">' . esc_html($term_name) . '</a> &raquo; ';
         }
-        echo get_the_title();
+        echo esc_html(get_the_title());
         echo '</div>';
     }
 }
+
 
 
 
@@ -349,7 +355,7 @@ function taxonomy_breadcrumb() {
             $parent_term = get_term($term->parent); // Get parent term
             $parent_link = get_term_link($parent_term); // Parent term link
             
-            echo '<a href="' . esc_url($parent_link) . '">' . esc_html($parent_term->name) . '</a> / ';
+            echo '<a href="' . esc_url($parent_link) . '">' . esc_html($parent_term->name) . '</a> &raquo; ';
         }
         
         // Current term

@@ -1,5 +1,5 @@
 <?php footer_helper_menu('Prodajni program', 'vehicle-type');?>
-<?php footer_helper_menu('Oprema', 'apparel');?>
+<?php footer_helper_menu('Oprema', 'equipment');?>
 <?php footer_helper_menu('Nadomestni deli', 'parts-type');?>
 
 <?php wp_nav_menu(

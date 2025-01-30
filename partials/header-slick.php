@@ -19,8 +19,8 @@
             <div class="col-12 col-lg-8">
 
             <div class="slide-content mb-7">
-            <p class="display-4 text-white"><?php the_title();?></p>
-            <span class="text-white">
+            <p class="display-3 text-white"><?php the_title();?></p>
+            <span class="text-white h3 fw-light">
                 <?php the_excerpt();?>        
             </span>
             <a href="<?php the_permalink();?>" class="btn btn-primary display-2">PREBERI VEČ</a>

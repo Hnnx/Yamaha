@@ -4,13 +4,21 @@
  *  Get pinned posts
  */
 
- $sticky_posts = get_posts(array(
-    // 'post__in'       => get_option('sticky_posts'), 
-    'posts_per_page' => 3, 
-    'orderby'        => 'date', 
-    'order'          => 'ASC', 
-));
-
+ $sticky_posts_ids = get_option('sticky_posts');
+ if (!empty($sticky_posts_ids)) {
+     $sticky_posts = get_posts(array(
+         'post__in'       => $sticky_posts_ids, 
+         'posts_per_page' => 3, 
+         'orderby'        => 'date', 
+         'order'          => 'DESC', 
+     ));
+ } else {
+    $sticky_posts = get_posts(array(
+        'posts_per_page' => 1, 
+        'orderby'        => 'date', 
+        'order'          => 'DESC', 
+    ));
+ }
 
  ?>
 

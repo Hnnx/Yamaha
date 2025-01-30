@@ -11,7 +11,7 @@
  */
 
  global $template;
- #echo $template;
+// echo $template;
 
 
 ?>

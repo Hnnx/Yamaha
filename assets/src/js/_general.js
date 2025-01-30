@@ -30,19 +30,21 @@ jQuery.noConflict();
           $('.tax-menu .list-group-item.has-children').on('click', function (e) {
               e.preventDefault(); // Prevent the link from being followed
   
-              // Using siblings() to find the sub-menu that is a sibling of the clicked item
-              var $submenu = $(this).siblings('.sub-menu'); 
-              
-              $submenu.stop(true, true).slideToggle(); // Slide it down or up
-          });
+              var $submenu = $(this).next('.sub-menu');  // Use next() to target the corresponding sub-menu
   
-          // Remove parent term (with 'has-children') from the submenu to avoid duplication
-          $('.tax-menu .sub-menu').each(function () {
-              // $(this).find('.has-children').remove(); // Remove parent term from submenu
+              // Close all other sub-menus except the one being toggled
+              $('.tax-menu .sub-menu').not($submenu).slideUp();
+  
+              // Toggle the clicked item's submenu
+              $submenu.stop(true, true).slideToggle();
           });
   
       }
-  })(); 
+  })();
+  
+  
+  
+  
 
 
 
@@ -253,6 +255,7 @@ class General {
     // Select the #featured-grid element for animation
     const featuredGrid = document.querySelector('#featured-grid');
 
+
     if (featuredGrid) {
       const gridObserver = new IntersectionObserver((entries, gridObserver) => {
         entries.forEach(entry => {
@@ -262,7 +265,7 @@ class General {
           }
         });
       }, {
-        threshold: 0.5 // Fully in view
+        threshold: 0.2 // Fully in view
       });
 
       gridObserver.observe(featuredGrid);
