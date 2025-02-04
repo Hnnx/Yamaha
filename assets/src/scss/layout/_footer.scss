@@ -1,7 +1,7 @@
 footer {
 
   @include media-breakpoint-down(md) {
-    padding-bottom: 70px;
+    padding-bottom: 85px;
   }
 }
 .colophon {
@@ -40,9 +40,9 @@ footer {
   }
 
 
-  .bottom-bar {
+  .bottom-bar {    
     @include media-breakpoint-down(md) {
-      padding-bottom: 70px; //offset for mobile menu
+      font-size: 2.5rem;
     }
   }
 }
