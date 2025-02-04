@@ -1,5 +1,8 @@
 footer {
-  padding-bottom: 70px;
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 70px;
+  }
 }
 .colophon {
   width: 100%;
