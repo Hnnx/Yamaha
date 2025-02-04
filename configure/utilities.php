@@ -186,8 +186,9 @@ if ( !function_exists( 'helper_menu' ) ) {
                                         <i class="fa-solid fa-chevron-right"></i>
                                     <?php endif; ?>
                                 </a>
+                                
                                 <?php if ( !empty( $children ) ) : ?>
-                                    <ul class="sub-menu">
+                                    <ul class="sub-menu" data-depth="1"> <!-- Only one level deep -->
                                         <?php foreach ( $children as $child ) : ?>
                                             <li class="sub-menu-item">
                                                 <a href="<?php echo esc_url( get_term_link( $child ) ); ?>">
@@ -207,6 +208,7 @@ if ( !function_exists( 'helper_menu' ) ) {
         <?php
     }
 }
+
 
 
 // Footer helper menu
@@ -348,7 +350,7 @@ function taxonomy_breadcrumb() {
         $term = get_queried_object(); // Get the current term object
         
         // Breadcrumb start
-        echo '<nav class="taxonomy-breadcrumb">';
+        echo '<nav class="taxonomy-breadcrumb mt-5 mt-md-0">';
         
         // Get the parent term hierarchy, if exists
         if ($term->parent) {

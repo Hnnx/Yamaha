@@ -5,11 +5,12 @@
  */
 
  $gallery = get_field('gallery'); 
-
-
 ?>
 
+
 <!-- Main Image Slider -->
+<?php if (!empty($gallery) && is_array($gallery)): ?>
+
 <div class="slick-product">
 
     <div class="product-main-slider">
@@ -27,6 +28,8 @@
         <?php endforeach;?>
     </div>
 </div>
+<?php endif;?>
+
 
 
 

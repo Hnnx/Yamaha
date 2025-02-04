@@ -1,4 +1,4 @@
-<div id="header-single" class="pt-9" style="background:url('<?php the_post_thumbnail_url();?>') center/cover no-repeat">
+<div id="header-single" class="pt-md-9" style="background:url('<?php the_post_thumbnail_url();?>') center/cover no-repeat">
     
 <?php if($vid_url = get_field('video')):?>
 <video autoplay muted loop id="background-video">

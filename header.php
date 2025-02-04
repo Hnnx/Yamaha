@@ -40,15 +40,18 @@
 
         <header id="header" class="site-header">
 
-            <div class="mobile-nav position-fixed d-md-none p-2">
-                <div class="text-end" id="burger">burger icon</div>
+            <div class="mobile-nav shadow-lg d-flex justify-content-between align-items-center position-fixed d-md-none p-2">
+                <?php echo get_custom_logo();?>
+                <div class="text-end" id="burger">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </div>
             </div>
 
             <div id="nav" class="nav-wrapper bg-white">
-                <div class="container-fluid px-md-9">
+                <div class="container-fluid px-md-7">
                     <div class="row">
                         <div class="col-12">
-                            <div class="d-flex gap-5 py-3">
+                            <div class="d-flex flex-column align-items-center flex-md-row gap-5 py-3">
                                 
                                 <?php if ( has_custom_logo() ) : ?>
                                     <div class="desktop-logo d-none d-md-block">
@@ -57,7 +60,7 @@
                                 <?php endif; ?>
 
                                 <div class="d-flex gap-3">
-                                    <nav id="site-navigation" class="d-flex align-items-center gap-4">
+                                    <nav id="site-navigation" class="d-flex flex-column flex-md-row align-items-center gap-4">
 
                                         <?php get_template_part( 'partials/menu','aux' ) ;?>
 
@@ -75,7 +78,7 @@
 
                                 </div>
 
-                                <div class="d-flex ms-auto align-items-center gap-3">
+                                <div class="d-flex ms-md-auto align-items-center gap-3">
                                     <?php if ( is_active_sidebar( 'main-sidebar' ) ) : ?>
                                         <div id="main-sidebar-area" class="widget-area">
                                             <?php dynamic_sidebar( 'main-sidebar' ); ?>

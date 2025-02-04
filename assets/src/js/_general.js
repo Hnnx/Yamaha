@@ -131,15 +131,41 @@ jQuery.noConflict();
       infinite: false
     });
 
-    // Menu
-    $('.menu-item-has-children > a').on('click', function (e) {
-      e.preventDefault(); // Prevent the link from navigating
-      const parent = $(this).parent(); // Get the parent element
-      // Close other open menus
-      $('.menu-item-has-children.open').not(parent).removeClass('open');
-      // Toggle the current menu
-      parent.toggleClass('open');
+    $(".menu-item-has-children > a").on("click", function (e) {
+      let parent = $(this).parent();
+      let submenu = parent.children(".sub-menu");
+    
+      // Prevent default behavior only if submenu exists
+      if (submenu.length) {
+        e.preventDefault();
+    
+        // Toggle submenu visibility
+        if (submenu.is(":visible")) {
+          submenu.slideUp(300);
+          parent.removeClass("open");
+        } else {
+          // Close other open menus first
+          $(".menu-item-has-children.open")
+            .not(parent)
+            .removeClass("open")
+            .children(".sub-menu")
+            .slideUp(300);
+    
+          // Open the clicked menu
+          parent.addClass("open");
+          submenu.stop(true, true).slideDown(300);
+        }
+      }
     });
+    
+    // Remove nested submenus on mobile
+    if ($(window).width() <= 767) {
+      $(".sub-menu .sub-menu").remove();
+    }
+    
+    
+  
+  
 
     // Close the menu when clicking outside
     $(document).on('click', function (e) {
@@ -237,20 +263,31 @@ class General {
 
     const slideBoxes = document.querySelectorAll('.slide-box');
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view', 'animate__fadeInRight');
-          observer.unobserve(entry.target); // Stop observing after animation starts
-        }
-      });
-    }, {
-      threshold: 1
-    });
+    window.onload = function () {
+      const slideBoxes = document.querySelectorAll('.slide-box');
 
-    slideBoxes.forEach(slideBox => {
-      observer.observe(slideBox);
-    });
+
+
+      let isMobile = window.matchMedia('(max-width: 767px)').matches;
+      let rootMargin = isMobile ? "-50px 0px" : "0px";
+  
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('in-view', 'animate__fadeInRight');
+                  observer.unobserve(entry.target); // Stop observing after animation starts
+              }
+          });
+      }, {
+          threshold: 1,
+          rootMargin: rootMargin
+      });
+  
+      slideBoxes.forEach(slideBox => {
+          observer.observe(slideBox);
+      });
+  };
+  
 
     // Select the #featured-grid element for animation
     const featuredGrid = document.querySelector('#featured-grid');

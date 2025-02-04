@@ -15,6 +15,11 @@
     width: 100% !important;
 }
 
+.ginput_container_textarea textarea {
+    font-size: 24px;
+    font-weight: 400;
+}
+
 
 .disabled-input {
     input {
@@ -38,6 +43,10 @@
 // VALIDATION
 
 .gform_submission_error {
+    font-size: 2rem !important;
+}
+
+.gfield_validation_message {
     font-size: 2rem !important;
 }
 

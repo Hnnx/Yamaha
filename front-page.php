@@ -9,7 +9,7 @@ get_header(); ?>
 
 <div class="box-wrapper my-3" style="background-image: url('<?= get_static_dir().'/img/footer.webp';?>');">
 
-    <div class="slide-box animate__animated p-5">
+    <div class="slide-box animate__animated p-3 p-md-5">
         <div class="content-animate">
             <h2 class="fw-bold animate__animated"> NOVI MODELI </h2>
             <h2 class="fw-bold text-primary animate__animated delayed"> 2025 </h2>

@@ -38,7 +38,7 @@ $current_taxonomy = get_queried_object();?>
 
             <?php if ($child_posts->have_posts()) : ?>
 
-                <div class="layout-grid-4">
+                <div class="layout-grid-4 mobile-grid-2">
                     <?php while ($child_posts->have_posts()) : $child_posts->the_post(); ?>
                         <?php get_template_part('template-loop/content', get_post_type()); ?>
                     <?php endwhile; ?>
@@ -63,7 +63,7 @@ $current_taxonomy = get_queried_object();?>
 
         <?php if ($parent_posts->have_posts()) : ?>
 
-            <div class="layout-grid-4">
+            <div class="layout-grid-4 mobile-grid-2">
                 <?php while ($parent_posts->have_posts()) : $parent_posts->the_post(); ?>
                     <?php get_template_part('template-loop/content', get_post_type()); ?>
                 <?php endwhile; ?>
@@ -92,7 +92,7 @@ $current_taxonomy = get_queried_object();?>
             <hr class="mt-0">
         </div>
 
-        <div class="layout-grid-4">
+        <div class="layout-grid-4 mobile-grid-2">
             <?php while ($child_posts->have_posts()) : $child_posts->the_post(); ?>
                 <?php get_template_part('template-loop/content', get_post_type()); ?>
             <?php endwhile; ?>

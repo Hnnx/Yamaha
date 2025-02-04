@@ -49,7 +49,7 @@ get_header();
 								)); ?>
 								
 								<?php if ($posts->have_posts()) :?>
-									<div class="layout-grid-4">
+									<div class="layout-grid-4 mobile-grid-2">
 										<?php while ($posts->have_posts()) : $posts->the_post() ;?>
 											<?php get_template_part( 'template-loop/content', get_post_type()); ?>
 										<?php endwhile;?>

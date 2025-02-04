@@ -33,14 +33,14 @@
 			<div class="row">
 				<div class="col-12">
 	
-					<div class="d-flex flex-column flex-md-row gap-4 text-white">
-						<div class="align-self-center">
+					<div class="d-flex flex-column flex-md-row gap-2 gap-md-4 text-white">
+						<div class="align-self-center h2 fw-normal">
 							&copy; 
 							<?php echo date("Y"); ?> 
 							<?php echo get_bloginfo( 'name' ); ?>
 						</div>
 	
-						<nav id="privacy-navigation" class="align-content-center">
+						<nav id="privacy-navigation" class="h2 fw-normal align-self-center">
 							<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">
 								Politika zasebnosti
 							</a>

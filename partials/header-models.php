@@ -10,7 +10,7 @@
  ?>
 
 
-<div class="layout-grid-4">
+<div class="layout-grid-4 mobile-grid-2">
 
     <?php foreach ($vozila as $id) :?>
         <a class="vehicle text-reset" href="<?php echo get_the_permalink($id);?>">
@@ -20,7 +20,7 @@
 
                 <?php echo wp_trim_words(get_the_excerpt($id), 15, '...'); ?>
 
-                    <span class="btn btn-primary d-block fit-content mt-5">
+                    <span class="btn btn-primary d-block fit-content mt-2 mt-md-5">
                         Preveri ponudbo
                     </span>
                 </div>

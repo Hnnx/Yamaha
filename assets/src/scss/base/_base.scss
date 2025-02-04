@@ -33,6 +33,10 @@ pre.dump {
 
   &.padded {
     padding: 0px 8%;
+
+    @include media-breakpoint-down(md){
+      padding: 0px 3%;
+    }
   }
 }
 

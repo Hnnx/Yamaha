@@ -34,7 +34,7 @@
     </div>
 
 
-    <div class="content d-flex flex-column gap-8">
+    <div class="content d-flex flex-column gap-4 gap-md-8">
 
         <div class="feature-box p-5 animate__animated animate__slideInRight animate__delay-1s animate-first">
             <a href="<?= site_url( '/prodaja/motocikli/');?>">
