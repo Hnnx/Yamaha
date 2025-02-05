@@ -202,3 +202,26 @@ if ( ! function_exists( 'lvar_dump' ) ) {
         call_user_func_array( 'var_dumpl', func_get_args() );
     }
 }
+
+// ACF STYLE
+
+function acf_style() {
+    ?>
+    <style>
+
+		.acf-test-ride, .acf-header-sales {
+			background: rgb(217 217 217);
+		}
+
+		.acf-test-ride, .acf-header-sales label {
+			font-size: 18px;
+		}
+		
+		.acf-test-ride .acf-fields, .acf-header-sales .acf-fields  {
+			background: rgb(217 217 217);
+		}
+
+    </style>
+    <?php
+}
+add_action('admin_head', 'acf_style');

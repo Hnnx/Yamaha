@@ -1,10 +1,8 @@
 <?php
-
 $data = get_field('test_ride','options');
-
 ?>
 
-<div class="colophon my-13" style="background:url('<?= $data['background']['url'] ;?>') center/cover no-repeat">
+<div class="colophon my-13" style="background:url('<?= $data['background'] ;?>') center/cover no-repeat">
     <div class="container">
 
     <div class="row">

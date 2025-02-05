@@ -20,6 +20,9 @@
     ));
  }
 
+
+ $header_data = get_field('header_data', 'options');
+
  ?>
 
 
@@ -37,20 +40,20 @@
     <div class="content d-flex flex-column gap-4 gap-md-8">
 
         <div class="feature-box p-5 animate__animated animate__slideInRight animate__delay-1s animate-first">
-            <a href="<?= site_url( '/prodaja/motocikli/');?>">
+            <a href="<?php echo $header_data['prodaja_povezava'];?>">
                 <div class="img-wrapper">
-                    <img src="<?= get_static_dir().'/img/yam_r1.png';?>" alt="">
+                    <img src="<?php echo $header_data['prodaja_slika'];?>" alt="">
                 </div>
                 <p class="display-4 fw-bold text-center">Prodaja</p>
             </a>
         </div>
 
         <div class="feature-box p-5 animate__animated animate__slideInRight animate__delay-1s">
-            <a href="<?php echo site_url().'/servis/';?>">
+            <a href="<?php echo $header_data['servis_povezava'];?>">
                 <div class="img-wrapper">
-                        <img src="<?= get_static_dir().'/img/yam_r1.png';?>" alt="">
+                <img src="<?php echo $header_data['servis_slika'];?>" alt="">
                 </div>
-                <p class="display-4 fw-bold text-center">Servis</p>
+                <p class="display-4 fw-bold text-center">Servis</p>    
             </a>
 
         </div>
@@ -59,3 +62,4 @@
 
     
 </div>
+

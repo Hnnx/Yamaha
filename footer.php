@@ -33,7 +33,8 @@
 			<div class="row">
 				<div class="col-12">
 
-					<div class="d-flex gap-2 justify-content-between text-white h2 fw-normal">
+				
+					<div class="d-flex gap-2 justify-content-between text-white <?= wp_is_mobile() ? 'h2 fw-normal' : '';?>">
 						<div class="align-self-center">
 							&copy; 
 							<?php echo date("Y"); ?> 
